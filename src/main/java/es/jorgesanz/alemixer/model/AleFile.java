@@ -9,6 +9,5 @@ import java.util.List;
 public class AleFile {
 
     private Heading heading;
-    private List<String> columnNames;
     private List<VideoCut> videoCuts;
 }
