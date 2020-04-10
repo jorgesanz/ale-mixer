@@ -21,7 +21,7 @@ public class AleMixerService {
     public void mix(){
         AleFile baseAleFile = inputAleFileReaderService.read("A104.ale");
         log.info("base .ale file loaded");
-        AleFile replacerAleFile = inputAleFileReaderService.read("A104.ale");
+        AleFile replacerAleFile = inputAleFileReaderService.read("A104-2.ale");
         log.info("replacer .ale file loaded");
         AleFile  replacedAleFile = columnReplaceService.replace(baseAleFile, replacerAleFile);
         log.info("column replacement done");
