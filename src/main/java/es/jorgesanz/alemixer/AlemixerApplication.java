@@ -1,5 +1,6 @@
 package es.jorgesanz.alemixer;
 
+import es.jorgesanz.alemixer.model.InputParams;
 import es.jorgesanz.alemixer.service.AleMixerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,37 +15,30 @@ import java.util.Scanner;
 
 @SpringBootApplication
 @Slf4j
-public class AlemixerApplication implements CommandLineRunner {
+public class AlemixerApplication{
 
 	@Autowired
 	private ApplicationContext applicationContext;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner( System. in);
 
-		args = new String[3];
+		InputParams inputParams = new InputParams();
 
 		log.info("Enter file 1 location");
-		args[0]= scanner. nextLine();
+		inputParams.setInputFile1(scanner. nextLine());
 
 		log.info("Enter file 2 location");
-		args[1]= scanner. nextLine();
+		inputParams.setInuptFile2(scanner. nextLine());
 
 		log.info("Enter output file location");
-		args[2]= scanner. nextLine();
+		inputParams.setOutputFile(scanner. nextLine());
+
 		ConfigurableApplicationContext context = SpringApplication.run(AlemixerApplication.class, args);
 		AleMixerService aleMixerService =  context.getBean(AleMixerService.class);
-		aleMixerService.mix();
+		aleMixerService.mix(inputParams);
 
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		log.info("EXECUTING : command line runner");
-
-		for (int i = 0; i < args.length; ++i) {
-			log.info("args[{}]: {}", i, args[i]);
-		}
-	}
 }
