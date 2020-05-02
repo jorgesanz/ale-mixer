@@ -26,6 +26,7 @@ public class ColumnReplaceService {
             videoCut.getColumns().put(CAMERA_TYPE,replacerVideoCut.getColumns().get(CAMERA_TYPE));
 
         });
+
         return baseAleFile;
     }
 }

@@ -31,6 +31,7 @@ public class InputAleFileReaderService {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             aleFile.setHeading(readHeading(reader));
             List<String> columnNames =readColumnNames(reader);
+            aleFile.setColumnNames(columnNames);
             aleFile.setVideoCuts(readVideoCuts(reader,columnNames));
 
         } catch (IOException e) {

@@ -27,13 +27,16 @@ public class AlemixerApplication{
 		InputParams inputParams = new InputParams();
 
 		log.info("Enter file 1 location");
-		inputParams.setInputFile1(scanner. nextLine());
+//		inputParams.setInputFile1(scanner. nextLine());
+		inputParams.setInputFile1("C:\\Users\\jsanzbri\\Documents\\git\\ale-mixer\\src\\main\\resources\\A104.ale");
 
 		log.info("Enter file 2 location");
-		inputParams.setInuptFile2(scanner. nextLine());
+//		inputParams.setInuptFile2(scanner. nextLine());
+		inputParams.setInuptFile2("C:\\Users\\jsanzbri\\Documents\\git\\ale-mixer\\src\\main\\resources\\A104-2.ale");
 
 		log.info("Enter output file location");
-		inputParams.setOutputFile(scanner. nextLine());
+//		inputParams.setOutputFile(scanner. nextLine());
+		inputParams.setOutputFile("C:\\Users\\jsanzbri\\Documents\\git\\ale-mixer\\src\\main\\resources\\A104-out.ale");
 
 		ConfigurableApplicationContext context = SpringApplication.run(AlemixerApplication.class, args);
 		AleMixerService aleMixerService =  context.getBean(AleMixerService.class);
