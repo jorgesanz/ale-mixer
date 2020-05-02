@@ -24,7 +24,6 @@ public class ColumnReplaceService {
             videoCut.getColumns().put(ASC_SAT,replacerVideoCut.getColumns().get(ASC_SAT));
             videoCut.getColumns().put(SOURCE_RESOLUTION,replacerVideoCut.getColumns().get(SOURCE_RESOLUTION));
             videoCut.getColumns().put(CAMERA_TYPE,replacerVideoCut.getColumns().get(CAMERA_TYPE));
-
         });
 
         return baseAleFile;
