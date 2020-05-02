@@ -8,10 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 @Service
@@ -27,19 +24,18 @@ public class InputAleFileReaderService {
     public static final String FPS_HEADER_FIELD = "FPS";
     public static final String DATA = "Data";
 
-    public AleFile read(String fileName) {
+    public AleFile read(String fileLocation) {
         AleFile aleFile = new AleFile();
         try {
-            Resource resource = new ClassPathResource(fileName);
-            InputStream inputStream = resource.getInputStream();
+            InputStream inputStream = new FileInputStream(new File(fileLocation));
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
             aleFile.setHeading(readHeading(reader));
             List<String> columnNames =readColumnNames(reader);
+            aleFile.setColumnNames(columnNames);
             aleFile.setVideoCuts(readVideoCuts(reader,columnNames));
 
         } catch (IOException e) {
-            log.error(String.format("error loading file %s", fileName),e.getMessage());
+            log.error(String.format("error loading file %s", fileLocation),e.getMessage());
         }
         return aleFile;
     }
